@@ -7,5 +7,7 @@ import com.orsolyazolcsak.allamvizsga.model.Test;
 
 @Repository
 public interface TestRepository extends CrudRepository<Test, Long>{
-	Test findByProblem(long problemId);
+	
+	Test findByProblems(long problemId);
+	
 }

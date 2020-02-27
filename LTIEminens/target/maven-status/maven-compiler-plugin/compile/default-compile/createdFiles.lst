@@ -1,7 +1,0 @@
-com\orsolyazolcsak\allamvizsga\service\ProblemServiceImpl.class
-com\orsolyazolcsak\allamvizsga\Application.class
-com\orsolyazolcsak\allamvizsga\service\ProblemService.class
-com\orsolyazolcsak\allamvizsga\repository\ProblemRepository.class
-com\orsolyazolcsak\allamvizsga\repository\DifficultyRepository.class
-com\orsolyazolcsak\allamvizsga\model\Difficulty.class
-com\orsolyazolcsak\allamvizsga\model\Problem.class

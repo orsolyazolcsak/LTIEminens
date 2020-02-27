@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.orsolyazolcsak.allamvizsga.model.Problem;
 
 @Repository
-public interface ProblemRepository extends CrudRepository<Problem, Long>{
+public interface ProblemRepository extends CrudRepository<Problem, Long> {
+	
 	List<Problem> findByDifficultyId(long difficultyId);
 	List<Problem> findByTestId(long testId);
+	
 }

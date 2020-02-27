@@ -1,4 +1,6 @@
 insert into Difficulty (id, name) values(1,'easy');
+insert into Difficulty (id, name) values(2,'medium');
+insert into Difficulty (id, name) values(3,'hard');
 
 insert into Test (id, name) values (1, 'This is the first test');
 

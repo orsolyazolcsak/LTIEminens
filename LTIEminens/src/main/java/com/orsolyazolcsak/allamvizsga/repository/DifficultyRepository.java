@@ -8,6 +8,6 @@ import com.orsolyazolcsak.allamvizsga.model.Difficulty;
 @Repository
 public interface DifficultyRepository extends CrudRepository<Difficulty, Long>{
 	
-	Difficulty findByProblem(long problemId);
+	//Iterable<Difficulty> findAll();
 
 }

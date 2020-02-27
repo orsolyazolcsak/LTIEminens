@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.orsolyazolcsak.allamvizsga.model.Problem;
-//import com.orsolyazolcsak.allamvizsga.model.Difficulty;
-//import com.orsolyazolcsak.allamvizsga.repository.DifficultyRepository;
 import com.orsolyazolcsak.allamvizsga.repository.ProblemRepository;
 
 @Service
@@ -16,8 +14,6 @@ public class ProblemServiceImpl implements ProblemService{
 
 	@Autowired
 	private ProblemRepository problemRepository;
-	//@Autowired
-	//private DifficultyRepository difficultyRepository;
 	
 	public List<String> getAllProblemsByTest(long testId ){
 		List<String> result = new ArrayList<String>();

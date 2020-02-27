@@ -1,5 +1,9 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,12 +11,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Problem {
 	@Id
+	@Column(name = "problem_id")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "problem_Sequence")
 	@SequenceGenerator(name = "problem_Sequence", sequenceName = "PROBLEM_SEQ")
     private Long id;
@@ -40,6 +47,14 @@ public class Problem {
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
 	
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(
+			name="TestReadyToTake_Problem",
+			joinColumns = { @JoinColumn(name = "problem_id")},
+			inverseJoinColumns = {@JoinColumn(name = "testReadyToTake_id")}
+	)
+	Set<TestReadyToTake> testsReadyToTake = new HashSet<>();
+	
 	public Problem() {
 		
 	}
@@ -51,5 +66,6 @@ public class Problem {
 	public String getQuestion() {
 		return question;
 	}
+	
 	
 }

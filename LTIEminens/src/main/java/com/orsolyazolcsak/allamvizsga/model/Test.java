@@ -20,7 +20,7 @@ public class Test {
 	@SequenceGenerator(name = "test_Sequence", sequenceName = "TEST_SEQ")
     private Long id;
 	
-	@Column
+	@Column(name = "name")
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL,
