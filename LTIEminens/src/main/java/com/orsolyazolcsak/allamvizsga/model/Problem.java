@@ -1,6 +1,7 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -39,13 +41,23 @@ public class Problem {
 	@Column(name = "incorrectAnswer3")
 	private String incorrectAnswer3;
 	
+	@OneToMany(cascade = CascadeType.ALL,
+	            fetch = FetchType.EAGER,
+	            mappedBy = "problem")
+		private List<UsedHelp> usedHelp;
+		
 	@ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name = "difficulty_id", nullable = false)
 	    private Difficulty difficulty;
 	
+	@OneToMany(cascade = CascadeType.ALL,
+	            fetch = FetchType.EAGER,
+	            mappedBy = "problem")
+	    private List<Answer> answer;
+		
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "test_id", nullable = false)
-    private Test test;
+		@JoinColumn(name = "test_id", nullable = false)
+		private Test test;
 	
 	@ManyToMany(cascade = {CascadeType.ALL})
 	@JoinTable(

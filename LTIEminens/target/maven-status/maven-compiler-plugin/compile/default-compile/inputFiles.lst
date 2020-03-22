@@ -2,13 +2,16 @@ C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvi
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Role.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\Application.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Problem.java
+C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Answer.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\ProblemService.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\ProblemServiceImpl.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Difficulty.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\DifficultyRepository.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\DifficultyServiceImpl.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\User.java
+C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\UsedHelp.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\TestReadyToTake.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\TestRepository.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\ProblemRepository.java
+C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Help.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Test.java

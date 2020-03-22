@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -32,6 +33,16 @@ public class TestReadyToTake {
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
 	
+	@OneToMany(cascade = CascadeType.ALL,
+	            fetch = FetchType.EAGER,
+	            mappedBy = "testReadyToTake")
+		private List<UsedHelp> usedHelp;
+	
+	@OneToMany(cascade = CascadeType.ALL,
+	            fetch = FetchType.EAGER,
+	            mappedBy = "testReadyToTake")
+	    private List<Answer> answer;
+		
 	@ManyToMany(mappedBy="testsReadyToTake")
 	private Set<Problem> problems = new HashSet<Problem>();
 	

@@ -1,5 +1,8 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -26,6 +30,19 @@ public class User {
 	@Column(name = "fullName")
 	private String fullName;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name = "role_id", nullable = false)
+		private Role role;
+
+	@OneToMany(cascade = CascadeType.ALL,
+	            fetch = FetchType.EAGER,
+	            mappedBy = "user")
+		private List<Answer> answer;
+		
+	@OneToMany(cascade = CascadeType.ALL,
+	            fetch = FetchType.EAGER,
+	            mappedBy = "user")
+		private List<UsedHelp> usedHelp;
 	
 	public User() {
 		
@@ -36,8 +53,6 @@ public class User {
 	public String getFullName() {
 		return fullName;
 	}
-	@ManyToOne(fetch = FetchType.LAZY)
-    	@JoinColumn(name = "role_id", nullable = false)
-		private Role role;
 	
+		
 }
