@@ -5,9 +5,14 @@ import org.springframework.stereotype.Repository;
 
 import com.orsolyazolcsak.allamvizsga.model.Test;
 
+import java.util.List;
+
 @Repository
 public interface TestRepository extends CrudRepository<Test, Long>{
-	
-	Test findByProblems(long problemId);
-	
+
+	List<Test> findAll();
+
+	Test findById(Long id);
+
+	void deleteById(Long id);
 }

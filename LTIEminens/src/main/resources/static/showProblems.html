@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/showProblems.css">
+    <meta charset="UTF-8">
+    <title>Feladatok</title>
+</head>
+<body>
+<div class="menu">
+    <a href="http://localhost:3000">Főoldal</a>&nbsp|&nbsp;
+    <a href="http://localhost:3000/problems/addProblems">Feladat hozzáadása</a>
+</div>
+<div id="up">
+    <h2>Feladatok</h2>&nbsp;&nbsp;
+    {{#if id}}
+    <button onclick="window.location.href = 'http://localhost:3000/problems/addProblems/{{id}}';">Új feladat hozzáadása</button>
+    {{/if}}
+</div>
+<div style="overflow-x:auto;">
+    <table style="width:100%">
+        <tr id="problemHeader">
+            <th>Kérdés</th>
+            <th>Helyes válasz</th>
+            <th>Helytelen válasz 1</th>
+            <th>Helytelen válasz 2</th>
+            <th>Helytelen válasz 3</th>
+            <th>Nehézség</th>
+            <th>Teszt</th>
+        </tr>
+        {{#each problems}}
+        <tr>
+            <td>{{@key}}. {{question}}</td>
+            <td>{{correctAnswer}}</td>
+            <td>{{incorrectAnswer1}}</td>
+            <td>{{incorrectAnswer2}}</td>
+            <td>{{incorrectAnswer3}}</td>
+            <td>{{difficulty.type}}</td>
+            <td>{{test.testName}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+</body>
+</html>

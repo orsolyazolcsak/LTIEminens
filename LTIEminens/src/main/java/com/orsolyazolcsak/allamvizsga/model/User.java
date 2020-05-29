@@ -1,31 +1,29 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
 import java.util.List;
+import java.util.Optional;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
+
+import static com.orsolyazolcsak.allamvizsga.service.UserServiceImpl.generateSalt;
+import static com.orsolyazolcsak.allamvizsga.service.UserServiceImpl.hashPassword;
 
 @Entity
+@Table(name="user_eminens")
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "user_Sequence")
 	@SequenceGenerator(name = "user_Sequence", sequenceName = "USER_SEQ")
 	private Long id;
 	
-	@Column(name = "userName")
-	private String userName;
+	@Column(name = "username")
+	private String username;
 	
 	@Column(name = "password")
-	private String password;
+	private  String password;
+
+	@Column(name = "salt")
+	private  String salt;
 	
 	@Column(name = "fullName")
 	private String fullName;
@@ -50,9 +48,50 @@ public class User {
 	public Long getId() {
 		return id;
 	}
+
 	public String getFullName() {
 		return fullName;
 	}
-	
-		
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+
+		Optional<String> salt = generateSalt(512);
+
+		if(salt.isPresent()){
+
+			Optional<String> securedPassword = hashPassword(password, salt.get());
+
+			if (securedPassword.isPresent()){
+				this.salt = salt.get();
+				this.password = securedPassword.get();
+			}
+			else{
+				System.out.println("Error in setPassword: hashPassword");
+			}
+		}
+		else{
+			System.out.println("Error in setPassword: generateSalt");
+		}
+
+	}
 }

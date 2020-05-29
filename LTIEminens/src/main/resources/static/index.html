@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<link rel="stylesheet" href="/main.css" />
+    <meta charset="UTF-8">
+    <title>Tesztek</title>
+</head>
+<body>
+    <div class="menu">
+        <a href="http://localhost:8090">Főoldal</a>&nbsp;&nbsp;
+        <a href="http://localhost:8090/test/addTest">Új feladat hozzáadása</a>
+    </div>
+    <h2>Tesztek</h2>
+    <div style="overflow-x:auto;">
+        <table style="width:100%">
+            <tr id="testHeader">
+                <th>Cím</th>
+            </tr>
+        </table>
+    </div>
+    <div id="like_button_container"></div>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
+</body>
+</html>

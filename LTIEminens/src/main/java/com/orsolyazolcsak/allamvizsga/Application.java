@@ -1,13 +1,13 @@
 package com.orsolyazolcsak.allamvizsga;
 
-import java.util.List;
+import com.orsolyazolcsak.allamvizsga.service.DifficultyService;
+import com.orsolyazolcsak.allamvizsga.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.orsolyazolcsak.allamvizsga.service.DifficultyService;
-import com.orsolyazolcsak.allamvizsga.service.ProblemService;
+import java.util.List;
 
 
 @SpringBootApplication
@@ -21,7 +21,7 @@ public class Application implements CommandLineRunner{
 	public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-	
+
 	 @Override
 	    public void run(String... arg0) throws Exception {
 		 

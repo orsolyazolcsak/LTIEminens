@@ -29,10 +29,36 @@ public class Test {
     private List<Problem> problems;
 	
 	public Test() {
-		
+
 	}
-	
+
+	public Test(String name) {
+		this.name = name;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Problem> getProblems() {
+		return problems;
+	}
+
+	public void setProblems(List<Problem> problems) {
+		this.problems = problems;
+	}
+
+
 }
