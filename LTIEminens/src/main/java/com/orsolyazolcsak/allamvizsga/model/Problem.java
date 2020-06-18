@@ -70,7 +70,86 @@ public class Problem {
 	public Problem() {
 		
 	}
-	//getters/setters
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getCorrectAnswer() {
+		return correctAnswer;
+	}
+
+	public void setCorrectAnswer(String correctAnswer) {
+		this.correctAnswer = correctAnswer;
+	}
+
+	public String getIncorrectAnswer1() {
+		return incorrectAnswer1;
+	}
+
+	public void setIncorrectAnswer1(String incorrectAnswer1) {
+		this.incorrectAnswer1 = incorrectAnswer1;
+	}
+
+	public String getIncorrectAnswer2() {
+		return incorrectAnswer2;
+	}
+
+	public void setIncorrectAnswer2(String incorrectAnswer2) {
+		this.incorrectAnswer2 = incorrectAnswer2;
+	}
+
+	public String getIncorrectAnswer3() {
+		return incorrectAnswer3;
+	}
+
+	public void setIncorrectAnswer3(String incorrectAnswer3) {
+		this.incorrectAnswer3 = incorrectAnswer3;
+	}
+
+	public List<UsedHelp> getUsedHelp() {
+		return usedHelp;
+	}
+
+	public void setUsedHelp(List<UsedHelp> usedHelp) {
+		this.usedHelp = usedHelp;
+	}
+
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(Difficulty difficulty) {
+		this.difficulty = difficulty;
+	}
+
+	public List<Answer> getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(List<Answer> answer) {
+		this.answer = answer;
+	}
+
+	public Test getTest() {
+		return test;
+	}
+
+	public void setTest(Test test) {
+		this.test = test;
+	}
+
+	public Set<TestReadyToTake> getTestsReadyToTake() {
+		return testsReadyToTake;
+	}
+
+	public void setTestsReadyToTake(Set<TestReadyToTake> testsReadyToTake) {
+		this.testsReadyToTake = testsReadyToTake;
+	}
 
 	public Long getId() {
 		return id;

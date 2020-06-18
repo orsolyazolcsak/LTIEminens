@@ -1,3 +1,4 @@
+/*
 package com.orsolyazolcsak.allamvizsga.securingweb;
 
 import com.orsolyazolcsak.allamvizsga.service.UserService;
@@ -25,7 +26,8 @@ public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
                 .permitAll()
                 .anyRequest()
                 .authenticated();
-                /*.authorizeRequests()
+                */
+/*.authorizeRequests()
                     .antMatchers("/").permitAll()
                     .anyRequest().authenticated()
                     .and()
@@ -34,7 +36,8 @@ public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
                     .permitAll()
                     .and()
                 .logout()
-                    .permitAll();*/
+                    .permitAll();*//*
+
         // TODO secure vizsga indito oldal legalabb csak a Teacher role indithat vizsgat
 //        http.httpBasic().and().authorizeRequests()
 //                .antMatchers("/").permitAll()
@@ -59,3 +62,4 @@ public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
         auth.authenticationProvider(new CustomAuthenticationProvider(userService));
     }
 }
+*/

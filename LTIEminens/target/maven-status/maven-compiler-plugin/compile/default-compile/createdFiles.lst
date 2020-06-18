@@ -1,6 +1,4 @@
-com\orsolyazolcsak\allamvizsga\securingweb\CustomAuthenticationProvider.class
 com\orsolyazolcsak\allamvizsga\service\ProblemServiceImpl.class
-com\orsolyazolcsak\allamvizsga\securingweb\WebSecurityConfig.class
 com\orsolyazolcsak\allamvizsga\service\ProblemService.class
 com\orsolyazolcsak\allamvizsga\service\DifficultyServiceImpl.class
 com\orsolyazolcsak\allamvizsga\repository\ProblemRepository.class

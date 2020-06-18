@@ -30,7 +30,27 @@ public class Difficulty {
 	public Difficulty() {
 		 
 	}
-	 
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Problem> getProblems() {
+		return problems;
+	}
+
+	public void setProblems(List<Problem> problems) {
+		this.problems = problems;
+	}
+
 	public String getName() {
 		return name;
 	}

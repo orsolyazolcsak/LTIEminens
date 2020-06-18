@@ -30,7 +30,27 @@ public class Help {
 	public Help() {
 		 
 	}
-	 
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<UsedHelp> getUsedHelp() {
+		return usedHelp;
+	}
+
+	public void setUsedHelp(List<UsedHelp> usedHelp) {
+		this.usedHelp = usedHelp;
+	}
+
 	public String getName() {
 		return name;
 	}

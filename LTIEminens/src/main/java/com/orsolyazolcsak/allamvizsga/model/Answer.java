@@ -45,7 +45,55 @@ public class Answer {
 	public Answer() {
 		 
 	}
-	 
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public boolean isAnswerIsCorrect() {
+		return answerIsCorrect;
+	}
+
+	public void setAnswerIsCorrect(boolean answerIsCorrect) {
+		this.answerIsCorrect = answerIsCorrect;
+	}
+
+	public List<UsedHelp> getUsedHelp() {
+		return usedHelp;
+	}
+
+	public void setUsedHelp(List<UsedHelp> usedHelp) {
+		this.usedHelp = usedHelp;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Problem getProblem() {
+		return problem;
+	}
+
+	public void setProblem(Problem problem) {
+		this.problem = problem;
+	}
+
+	public TestReadyToTake getTestReadyToTake() {
+		return testReadyToTake;
+	}
+
+	public void setTestReadyToTake(TestReadyToTake testReadyToTake) {
+		this.testReadyToTake = testReadyToTake;
+	}
+
 	public boolean getAnswerIsCorrect() {
 		return answerIsCorrect;
 	}

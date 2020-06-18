@@ -37,12 +37,52 @@ public class UsedHelp {
 	public UsedHelp() {
 		
 	}
-	//getters/setters
 
 	public Long getId() {
 		return id;
 	}
-	
-	
-	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Help getHelp() {
+		return help;
+	}
+
+	public void setHelp(Help help) {
+		this.help = help;
+	}
+
+	public TestReadyToTake getTestReadyToTake() {
+		return testReadyToTake;
+	}
+
+	public void setTestReadyToTake(TestReadyToTake testReadyToTake) {
+		this.testReadyToTake = testReadyToTake;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Problem getProblem() {
+		return problem;
+	}
+
+	public void setProblem(Problem problem) {
+		this.problem = problem;
+	}
+
+	public Problem getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(Problem answer) {
+		this.answer = answer;
+	}
 }
