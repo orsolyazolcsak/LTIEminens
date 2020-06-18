@@ -2,38 +2,40 @@ package com.orsolyazolcsak.allamvizsga.controller;
 
 import com.orsolyazolcsak.allamvizsga.model.Problem;
 import com.orsolyazolcsak.allamvizsga.repository.ProblemRepository;
+import com.orsolyazolcsak.allamvizsga.service.ProblemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @RestController
+@RequestMapping("/problem")
 public class ProblemController {
 
-    private final ProblemRepository repository;
+    @Autowired
+    private ProblemService problemService;
 
-    ProblemController(ProblemRepository repository) {
-        this.repository = repository;
+    @GetMapping
+    public Set<Problem> getTests() {
+        return problemService.findAll();
     }
 
-    @GetMapping("/problem")
-    List<Problem> all() {
-        return repository.findAll();
-    }
-
-    @PostMapping("/problem")
+    @PostMapping
     Problem newProblem(@RequestBody Problem newProblem) {
-        return repository.save(newProblem);
+        return problemService.createNewProblem(newProblem);
     }
 
-    @GetMapping("/problem/{id}")
-    Problem one(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    Optional<Problem> one(@PathVariable Long id) {
 
-        return repository.findById(id);
+        return problemService.findById(id);
         //.orElseThrow(()-> new ProblemNotFoundException(id));
     }
 
-    @DeleteMapping("/problem/{id}")
+    @DeleteMapping("/{id}")
     void deleteProblem(@PathVariable Long id) {
-        repository.deleteById(id);
+        problemService.deleteById(id);
     }
 }

@@ -29,20 +29,20 @@ public class Problem {
 	@Column(name = "question")
 	private String question;
 	
-	@Column(name = "correctAnswer")
+	@Column(name = "correct_answer")
 	private String correctAnswer;
 	
-	@Column(name = "incorrectAnswer1")
+	@Column(name = "incorrect_answer1")
 	private String incorrectAnswer1;
 	
-	@Column(name = "incorrectAnswer2")
+	@Column(name = "incorrect_answer2")
 	private String incorrectAnswer2;
 	
-	@Column(name = "incorrectAnswer3")
+	@Column(name = "incorrect_answer3")
 	private String incorrectAnswer3;
 	
 	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.EAGER,
+	            fetch = FetchType.LAZY,
 	            mappedBy = "problem")
 		private List<UsedHelp> usedHelp;
 		
@@ -51,7 +51,7 @@ public class Problem {
 	    private Difficulty difficulty;
 	
 	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.EAGER,
+	            fetch = FetchType.LAZY,
 	            mappedBy = "problem")
 	    private List<Answer> answer;
 		
@@ -61,9 +61,9 @@ public class Problem {
 	
 	@ManyToMany(cascade = {CascadeType.ALL})
 	@JoinTable(
-			name="TestReadyToTake_Problem",
+			name="Test_ready_to_take_Problem",
 			joinColumns = { @JoinColumn(name = "problem_id")},
-			inverseJoinColumns = {@JoinColumn(name = "testReadyToTake_id")}
+			inverseJoinColumns = {@JoinColumn(name = "test_ready_to_take_id")}
 	)
 	Set<TestReadyToTake> testsReadyToTake = new HashSet<>();
 	

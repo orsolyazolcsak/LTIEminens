@@ -3,24 +3,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 
 @Entity
+@Table(name="test_ready_to_take")
 public class TestReadyToTake {
 	@Id
-	@Column(name = "testReadyToTake_id")
+	@Column(name = "test_ready_to_take_id")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "testReadyToTake_Sequence")
 	@SequenceGenerator(name = "testReadyToTake_Sequence", sequenceName = "TESTREADYTOTAKE_SEQ")
     private Long id;
@@ -39,7 +29,7 @@ public class TestReadyToTake {
 		private List<UsedHelp> usedHelp;
 	
 	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.EAGER,
+	            fetch = FetchType.LAZY,
 	            mappedBy = "testReadyToTake")
 	    private List<Answer> answer;
 		

@@ -21,7 +21,7 @@ public class Answer {
     @SequenceGenerator(name = "answer_Sequence", sequenceName = "ANSWER_SEQ")
     private Long id;
 	
-	@Column(name = "answerIsCorrect")
+	@Column(name = "answer_is_correct")
 	private boolean answerIsCorrect;
 	
 	@OneToMany(cascade = CascadeType.ALL,
@@ -38,7 +38,7 @@ public class Answer {
 		private Problem problem;
 		
 	@ManyToOne(fetch = FetchType.LAZY)
-    	@JoinColumn(name = "testReadyToTake_id", nullable = false)
+    	@JoinColumn(name = "test_ready_to_take_id", nullable = false)
 		private TestReadyToTake testReadyToTake;
 		
 		

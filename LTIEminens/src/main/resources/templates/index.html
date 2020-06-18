@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-	<link rel="stylesheet" href="/main.css" />
     <meta charset="UTF-8">
     <title>Tesztek</title>
+    <link rel="stylesheet" href="/main.css">
 </head>
 <body>
     <div class="menu">
@@ -11,6 +11,13 @@
         <a href="http://localhost:8090/test/addTest">Új feladat hozzáadása</a>
     </div>
     <h2>Tesztek</h2>
+    <form action="/register" method="POST">
+        <input type="text" name="fullName" />
+        <input type="password" name="password" />
+        <input type="text" name="username" />
+        <input type="number" name="roleId" />
+        <input type="submit" value="Submit"/>
+    </form>
     <div style="overflow-x:auto;">
         <table style="width:100%">
             <tr id="testHeader">
@@ -26,6 +33,6 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
     <!-- Load our React component. -->
-    <script src="like_button.js"></script>
+    <script src="built/like_button.js"></script>
 </body>
 </html>

@@ -22,10 +22,10 @@ public class User {
 	@Column(name = "password")
 	private  String password;
 
-	@Column(name = "salt")
+	@Column(name = "salt", length = 4000)
 	private  String salt;
 	
-	@Column(name = "fullName")
+	@Column(name = "full_name")
 	private String fullName;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -33,18 +33,51 @@ public class User {
 		private Role role;
 
 	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.EAGER,
+	            fetch = FetchType.LAZY,
 	            mappedBy = "user")
 		private List<Answer> answer;
 		
 	@OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.EAGER,
+	            fetch = FetchType.LAZY,
 	            mappedBy = "user")
 		private List<UsedHelp> usedHelp;
 	
 	public User() {
 		
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public List<Answer> getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(List<Answer> answer) {
+		this.answer = answer;
+	}
+
+	public List<UsedHelp> getUsedHelp() {
+		return usedHelp;
+	}
+
+	public void setUsedHelp(List<UsedHelp> usedHelp) {
+		this.usedHelp = usedHelp;
+	}
+
 	public Long getId() {
 		return id;
 	}

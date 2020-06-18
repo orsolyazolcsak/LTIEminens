@@ -1,20 +1,13 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 @Entity
+@Table(name="used_help")
 public class UsedHelp {
 	@Id
-	@Column(name = "usedHelp_id")
+	@Column(name = "used_help_id")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "usedHelp_Sequence")
 	@SequenceGenerator(name = "usedHelp_Sequence", sequenceName = "USEDHELP_SEQ")
     private Long id;
@@ -25,7 +18,7 @@ public class UsedHelp {
 		private Help help;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "testReadyToTake_id", nullable = false)
+		@JoinColumn(name = "test_ready_to_take_id", nullable = false)
 		private TestReadyToTake testReadyToTake;
 		
 	@ManyToOne(fetch = FetchType.LAZY)

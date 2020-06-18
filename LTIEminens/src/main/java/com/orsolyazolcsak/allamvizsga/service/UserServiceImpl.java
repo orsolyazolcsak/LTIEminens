@@ -1,21 +1,22 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
-import com.orsolyazolcsak.allamvizsga.Application;
-import org.springframework.boot.SpringApplication;
+import com.orsolyazolcsak.allamvizsga.model.User;
+import com.orsolyazolcsak.allamvizsga.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserRepository repository;
 
     private static final int ITERATIONS = 65536;
     private static final int KEY_LENGTH = 512;
@@ -29,6 +30,48 @@ public class UserServiceImpl implements UserService{
         boolean  legyentrue = verifyPassword("PaSSworD", key, salt);
         boolean legyenfalse = verifyPassword("PaSSword", key, salt);
         System.out.println("true here: " + legyentrue + ", false here: " + legyenfalse);
+    }
+
+    @Override
+    public Set<User> findAll() {
+        return new HashSet<>(repository.findAll());
+    }
+
+    @Override
+    public void createNewUser(User newUser) {
+        repository.save(newUser);
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public Optional <User> findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+
+    @Override
+    public void deleteAll() {
+        repository.deleteAll();
+    }
+
+    //password char v String?
+    public boolean checkUser(String username, char[] password)
+    {
+        Optional <User> user = repository.findByUsername(username);
+        if(user.isPresent())
+        {
+            String salt = user.get().getSalt();
+            String key = hashPassword(password.toString(), salt).get();
+            verifyPassword(password.toString(), key, salt);
+            return true;
+        }
+        else{
+            System.out.println("User with username: " + username +   " not found.");
+            return false;
+        }
     }
 
     public static Optional<String> generateSalt(final int length)   {

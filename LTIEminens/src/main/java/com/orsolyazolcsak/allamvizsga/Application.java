@@ -17,14 +17,14 @@ public class Application implements CommandLineRunner{
 	ProblemService problemService;
 	@Autowired
 	DifficultyService difficultyService;
-	
+
 	public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
 	 @Override
 	    public void run(String... arg0) throws Exception {
-		 
+
 	        List<String> problems = problemService.getAllProblemsByTest(1);
 	        for(String problem : problems)
 	        {
