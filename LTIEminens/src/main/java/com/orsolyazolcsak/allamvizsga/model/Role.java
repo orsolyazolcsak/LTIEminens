@@ -1,5 +1,7 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "role_Sequence")
@@ -21,11 +25,6 @@ public class Role {
 	
 	@Column(name = "description")
 	private String description;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            mappedBy = "role")
-    private List<User> user;
 	
 	public Role() {
 		
@@ -41,14 +40,6 @@ public class Role {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<User> getUser() {
-		return user;
-	}
-
-	public void setUser(List<User> user) {
-		this.user = user;
 	}
 
 	public String getDescription() {

@@ -9,48 +9,57 @@ import com.orsolyazolcsak.allamvizsga.model.Problem;
 import com.orsolyazolcsak.allamvizsga.repository.ProblemRepository;
 
 @Service
-public class ProblemServiceImpl implements ProblemService{
+public class ProblemServiceImpl implements ProblemService {
 
-	@Autowired
-	private ProblemRepository repository;
+    private final ProblemRepository repository;
 
-	@Override
-	public Set<Problem> findAll() {
-		return new HashSet<>(repository.findAll());
-	}
+    @Autowired
+    public ProblemServiceImpl(ProblemRepository repository) {
+        this.repository = repository;
+    }
 
-	@Override
-	public Problem createNewProblem(Problem newProblem) {
-		repository.save(newProblem);
-		return newProblem;
-	}
+    @Override
+    public Set<Problem> findProblemsByDifficultyIdAndTestId(Long difficultyId, Long testId) {
+        return repository.findProblemsByDifficultyIdAndTestId(difficultyId, testId);
+    }
 
-	@Override
-	public Optional<Problem> findById(Long id) {
-		return repository.findById(id);
-	}
+    @Override
+    public Set<Problem> findAll() {
+        return new HashSet<>(repository.findAll());
+    }
+
+    @Override
+    public Problem createNewProblem(Problem newProblem) {
+        repository.save(newProblem);
+        return newProblem;
+    }
+
+    @Override
+    public Optional<Problem> findById(Long id) {
+        return repository.findById(id);
+    }
 
 
-	public List<String> getAllProblemsByTest(long testId ){
-		List<String> result = new ArrayList<String>();
-		List<Problem> problems = repository.findByTestId(testId);
-		for (Problem problem: problems) {
-			result.add(problem.getQuestion());
-		}
-		return result;
-	}
+    public List<String> getAllProblemsByTest(long testId) {
+        List<String> result = new ArrayList<String>();
+        List<Problem> problems = repository.findByTestId(testId);
+        for (Problem problem : problems) {
+            result.add(problem.getQuestion());
+        }
+        return result;
+    }
 
-	@Override
-	public void deleteById(long id) {
-		repository.deleteById(id);
-	}
+    @Override
+    public void deleteById(long id) {
+        repository.deleteById(id);
+    }
 
-	public List<String> getAllProblemsByDifficulty(long difficultyId) {
-		List<String> result = new ArrayList<String>();
+    public List<String> getAllProblemsByDifficulty(long difficultyId) {
+        List<String> result = new ArrayList<String>();
         List<Problem> problems = repository.findByDifficultyId(difficultyId);
         for (Problem problem : problems) {
             result.add(problem.getQuestion());
         }
         return result;
-	}
+    }
 }

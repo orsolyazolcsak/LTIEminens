@@ -8,16 +8,18 @@ import java.util.Set;
 
 public interface ProblemService {
 
-	Set<Problem> findAll();
+    Set<Problem> findAll();
 
-	Problem createNewProblem(Problem newProblem);
+    Problem createNewProblem(Problem newProblem);
 
-	Optional<Problem> findById(Long id);
+    Optional<Problem> findById(Long id);
 
-	public List<String> getAllProblemsByDifficulty(long difficultyId);
+    public List<String> getAllProblemsByDifficulty(long difficultyId);
 
-	public List<String> getAllProblemsByTest(long testId);
+    public List<String> getAllProblemsByTest(long testId);
 
-	void deleteById(long id);
+    void deleteById(long id);
+
+    Set<Problem> findProblemsByDifficultyIdAndTestId(Long difficultyId, Long testId);
 
 }

@@ -1,5 +1,6 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
+import com.orsolyazolcsak.allamvizsga.model.Problem;
 import com.orsolyazolcsak.allamvizsga.model.Test;
 
 import java.util.Optional;
@@ -11,4 +12,5 @@ public interface TestService {
     void createNewTest(Test newTest);
 
     Optional<Test> findById(Long id);
+    Set<Problem> getThreeProblemsOfGivenTestAndDifficulty(Long testId, Long difficultyId);
 }
