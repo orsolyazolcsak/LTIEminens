@@ -18,8 +18,8 @@ public class UsedHelp {
 		private Help help;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "test_ready_to_take_id", nullable = false)
-		private TestReadyToTake testReadyToTake;
+		@JoinColumn(name = "exam_id", nullable = false)
+		private Exam exam;
 		
 	@ManyToOne(fetch = FetchType.LAZY)
 		@JoinColumn(name = "user_id", nullable = false)
@@ -54,12 +54,12 @@ public class UsedHelp {
 		this.help = help;
 	}
 
-	public TestReadyToTake getTestReadyToTake() {
-		return testReadyToTake;
+	public Exam getExam() {
+		return exam;
 	}
 
-	public void setTestReadyToTake(TestReadyToTake testReadyToTake) {
-		this.testReadyToTake = testReadyToTake;
+	public void setExam(Exam exam) {
+		this.exam = exam;
 	}
 
 	public User getUser() {

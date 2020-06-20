@@ -1,5 +1,6 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
+import com.orsolyazolcsak.allamvizsga.dao.ProblemDAO;
 import com.orsolyazolcsak.allamvizsga.model.Problem;
 
 import java.util.List;
@@ -21,5 +22,7 @@ public interface ProblemService {
     void deleteById(long id);
 
     Set<Problem> findProblemsByDifficultyIdAndTestId(Long difficultyId, Long testId);
+
+    ProblemDAO toDao(Problem problem);
 
 }

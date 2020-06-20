@@ -1,3 +1,4 @@
+/*
 package com.orsolyazolcsak.allamvizsga.securingweb;
 
 import com.orsolyazolcsak.allamvizsga.model.User;
@@ -47,3 +48,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return true;
     }
 }
+*/

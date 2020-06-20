@@ -57,21 +57,11 @@ public class UserServiceImpl implements UserService{
         repository.deleteAll();
     }
 
-    //password char v String?
-    public boolean checkUser(String username, char[] password)
-    {
-        Optional <User> user = repository.findByUsername(username);
-        if(user.isPresent())
-        {
-            String salt = user.get().getSalt();
-            String key = hashPassword(password.toString(), salt).get();
-            verifyPassword(password.toString(), key, salt);
-            return true;
-        }
-        else{
-            System.out.println("User with username: " + username +   " not found.");
-            return false;
-        }
+
+    public boolean checkUser(String username, char[] password) {
+        return this.repository.findByUsername(username)
+                .map(u -> verifyPassword(new String(password), u.getPassword(), u.getSalt()))
+                .orElse(false);
     }
 
     public static Optional<String> generateSalt(final int length)   {

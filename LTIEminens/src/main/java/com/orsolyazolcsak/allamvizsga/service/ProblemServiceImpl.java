@@ -2,6 +2,7 @@ package com.orsolyazolcsak.allamvizsga.service;
 
 import java.util.*;
 
+import com.orsolyazolcsak.allamvizsga.dao.ProblemDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,17 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public Set<Problem> findProblemsByDifficultyIdAndTestId(Long difficultyId, Long testId) {
         return repository.findProblemsByDifficultyIdAndTestId(difficultyId, testId);
+    }
+
+    @Override
+    public ProblemDAO toDao(Problem problem) {
+        ProblemDAO p = new ProblemDAO();
+        p.setId(problem.getId());
+        p.setDifficulty(problem.getDifficulty());
+        p.setQuestion(problem.getQuestion());
+        // HashSet-be wrappeljuk hogy ne rendezetten kuldjuk a valaszokat(mindig az elso lenne a helyes a responseban)
+        p.setAnswers(new HashSet<>(Arrays.asList(problem.getCorrectAnswer(), problem.getIncorrectAnswer1(), problem.getIncorrectAnswer2(), problem.getIncorrectAnswer3())));
+        return p;
     }
 
     @Override

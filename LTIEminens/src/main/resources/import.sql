@@ -1,3 +1,4 @@
+-- a kerdesek rendezesehez fontos hogy konnyutol nehez fele novekedjenek az ID-k
 insert into Difficulty (id, name) values(1,'easy');
 insert into Difficulty (id, name) values(2,'medium');
 insert into Difficulty (id, name) values(3,'hard');
@@ -12,12 +13,18 @@ insert into Problem (problem_id, difficulty_id, test_id, question, correct_answe
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (3, 1, 2, 'Question nr. 1 - easy?', 'yes1', 'ab1c', 'de2f', 'gh3i');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (4, 1, 2, 'Question nr. 2 - easy?', 'yes2', 'a1bc', 'd2ef', 'ghi3');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (5, 1, 2, 'Question nr. 3 - easy?', 'yes3', 'ab1c', 'def2', 'g3hi');
+insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (16, 1, 2, 'Question nr. 14 - easy?', 'yes3', 'ab1c', 'def2', 'g3hi');
+insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (17, 1, 2, 'Question nr. 15 - easy?', 'yes3', 'ab1c', 'def2', 'g3hi');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (6, 2, 2, 'Question nr. 4 - medium?', 'yes4', '1abc', 'd2ef', 'g3hi');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (7, 2, 2, 'Question nr. 5 - medium?', 'yes5', 'ab1c', 'def2', 'g3hi');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (8, 2, 2, 'Question nr. 6 - medium?', 'yes6', 'a1bc', 'd2ef', 'gh3i');
+insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (14, 2, 2, 'Question nr. 12 - medium?', 'yes6', 'a1bc', 'd2ef', 'gh3i');
+insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (15, 2, 2, 'Question nr. 13 - medium?', 'yes6', 'a1bc', 'd2ef', 'gh3i');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (9, 3, 2, 'Question nr. 7 - hard?', 'yes7', 'abc1', '2def', 'g3hi');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (10, 3, 2, 'Question nr. 8 - hard?', 'yes8', '1abc', 'de2f', 'gh3i');
 insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (11, 3, 2, 'Question nr. 9 - hard ?', 'yes9', 'ab1c', 'de2f', 'g3hi');
+insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (12, 3, 2, 'Question nr. 10 - hard ?', 'yes9', 'ab1c', 'de2f', 'g3hi');
+insert into Problem (problem_id, difficulty_id, test_id, question, correct_answer, incorrect_answer1, incorrect_answer2, incorrect_answer3) values (13, 3, 2, 'Question nr. 11 - hard ?', 'yes9', 'ab1c', 'de2f', 'g3hi');
 
 insert into Role (id, description) values (1, 'Teacher');
 insert into Role (id, description) values (2, 'TestTakerStudent');

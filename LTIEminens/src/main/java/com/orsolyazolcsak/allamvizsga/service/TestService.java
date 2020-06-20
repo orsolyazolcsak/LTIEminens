@@ -12,5 +12,6 @@ public interface TestService {
     void createNewTest(Test newTest);
 
     Optional<Test> findById(Long id);
-    Set<Problem> getThreeProblemsOfGivenTestAndDifficulty(Long testId, Long difficultyId);
+
+    public Set<Problem> getYourProblemsTogether(Long testId);
 }

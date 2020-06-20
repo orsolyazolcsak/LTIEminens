@@ -1,5 +1,7 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,45 +15,44 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Difficulty {
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "difficulty_Sequence")
+public class Difficulty implements Comparable<Difficulty> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "difficulty_Sequence")
     @SequenceGenerator(name = "difficulty_Sequence", sequenceName = "DIFFICULTY_SEQ")
     private Long id;
-	
-	@Column(name = "name")
-	private String name;
-	
-	 @OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.EAGER,
-	            mappedBy = "difficulty")
-	    private List<Problem> problems;
-	 
-	public Difficulty() {
-		 
-	}
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "name")
+    private String name;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Difficulty() {
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    }
 
-	public List<Problem> getProblems() {
-		return problems;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setProblems(List<Problem> problems) {
-		this.problems = problems;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Difficulty{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+    @Override
+    public int compareTo(Difficulty other) {
+        return id.compareTo(other.id); // konnyutol nehez fele novekednek az ID-k
+    }
 }

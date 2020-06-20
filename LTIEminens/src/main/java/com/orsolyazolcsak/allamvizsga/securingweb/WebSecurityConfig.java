@@ -1,11 +1,13 @@
+/*
 package com.orsolyazolcsak.allamvizsga.securingweb;
 
 import com.orsolyazolcsak.allamvizsga.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
-//@Configuration
+@Configuration
 //@EnableOAuth2Sso
 public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
 {
@@ -25,6 +27,7 @@ public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
                 .permitAll()
                 .anyRequest()
                 .authenticated();
+*/
 /*.authorizeRequests()
                     .antMatchers("/").permitAll()
                     .anyRequest().authenticated()
@@ -34,7 +37,8 @@ public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
                     .permitAll()
                     .and()
                 .logout()
-                    .permitAll();*/
+                    .permitAll();*//*
+
 
         // TODO secure vizsga indito oldal legalabb csak a Teacher role indithat vizsgat
 //        http.httpBasic().and().authorizeRequests()
@@ -60,3 +64,4 @@ public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
         auth.authenticationProvider(new CustomAuthenticationProvider(userService));
     }
 }
+*/

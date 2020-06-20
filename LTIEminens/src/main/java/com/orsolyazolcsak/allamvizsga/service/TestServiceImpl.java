@@ -3,7 +3,6 @@ package com.orsolyazolcsak.allamvizsga.service;
 import com.orsolyazolcsak.allamvizsga.model.Problem;
 import com.orsolyazolcsak.allamvizsga.model.Test;
 import com.orsolyazolcsak.allamvizsga.repository.TestRepository;
-import oracle.jdbc.OracleTypeMetaData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +21,19 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    public Set<Problem> getYourProblemsTogether(Long testId){
+        Set<Problem> problems = new TreeSet<>();
+        problems.addAll(getThreeProblemsOfGivenTestAndDifficulty(testId, (long) 1));
+        problems.addAll(getThreeProblemsOfGivenTestAndDifficulty(testId, (long) 2));
+        problems.addAll(getThreeProblemsOfGivenTestAndDifficulty(testId, (long) 3));
+        if (problems.size() < 9) {
+            problems.clear();
+        }
+        return problems;
+    }
+
     public Set<Problem> getThreeProblemsOfGivenTestAndDifficulty(Long testId, Long difficultyId) {
-        Set<Problem> problems = problemService.findProblemsByDifficultyIdAndTestId(testId, difficultyId);
+        Set<Problem> problems = problemService.findProblemsByDifficultyIdAndTestId(difficultyId, testId);
         if (problems.size() > 3) {
             return getThreeProblems(problems.size(), problems);
         } else if (problems.size() == 3) {
@@ -35,31 +45,28 @@ public class TestServiceImpl implements TestService {
     }
 
     public Set<Problem> getThreeProblems(int length, Set<Problem> problemsSet) {
-        ArrayList<Integer> indexes = generateThreeRandomIndexesOf(problemsSet.size());
+        Iterator<Integer> indexes = generateThreeInts(problemsSet.size()).iterator();
         ArrayList<Problem> problems = new ArrayList<>(problemsSet);
         ArrayList<Problem> chosenProblems = new ArrayList<>();
-        chosenProblems.add(problems.get(indexes.get(0)));
-        chosenProblems.add(problems.get(indexes.get(1)));
-        chosenProblems.add(problems.get(indexes.get(2)));
+        chosenProblems.add(problems.get(indexes.next()));
+        chosenProblems.add(problems.get(indexes.next()));
+        chosenProblems.add(problems.get(indexes.next()));
         return new HashSet<>(chosenProblems);
     }
 
-    public ArrayList<Integer> generateThreeRandomIndexesOf(int problemsLength) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        ArrayList<Integer> randomNumbers = new ArrayList<Integer>();
-        for (int i = 1; i < problemsLength; ++i) {
-            list.add(new Integer(i));
-        }
-        Collections.shuffle(list);
-        for (int i = 0; i < 3; i++) {
-            randomNumbers.add(new Integer(i));
-        }
-        return randomNumbers;
+    public Set<Integer> generateThreeInts(int problemsLength) {
+        Set<Integer> indexes = new HashSet<>();
+        Random random = new Random();
+        while (indexes.size() < 3)
+            indexes.add(random.nextInt(problemsLength));
+        return indexes;
     }
 
     @Override
     public Set<Test> findAll() {
-        return new HashSet<>(repository.findAll());
+        List<Test> allTests = repository.findAll();
+        System.out.println("allTests = " + allTests);
+        return new TreeSet<>(allTests);
     }
 
     @Override

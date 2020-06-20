@@ -38,8 +38,8 @@ public class Answer {
 		private Problem problem;
 		
 	@ManyToOne(fetch = FetchType.LAZY)
-    	@JoinColumn(name = "test_ready_to_take_id", nullable = false)
-		private TestReadyToTake testReadyToTake;
+    	@JoinColumn(name = "exam_id", nullable = false)
+		private Exam exam;
 		
 		
 	public Answer() {
@@ -86,12 +86,12 @@ public class Answer {
 		this.problem = problem;
 	}
 
-	public TestReadyToTake getTestReadyToTake() {
-		return testReadyToTake;
+	public Exam getExam() {
+		return exam;
 	}
 
-	public void setTestReadyToTake(TestReadyToTake testReadyToTake) {
-		this.testReadyToTake = testReadyToTake;
+	public void setExam(Exam exam) {
+		this.exam = exam;
 	}
 
 	public boolean getAnswerIsCorrect() {
