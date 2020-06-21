@@ -24,7 +24,7 @@ public class LoginController {
         this.roleService = roleService;
     }
 
-    //@CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public ResponseEntity<User> loginUser(LoginUserDao loginUserDao) {
         System.out.println("post called");

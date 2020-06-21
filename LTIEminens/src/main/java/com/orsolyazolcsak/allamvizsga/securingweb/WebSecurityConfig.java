@@ -27,41 +27,42 @@ public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
                 .permitAll()
                 .anyRequest()
                 .authenticated();
-*/
-/*.authorizeRequests()
-                    .antMatchers("/").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .and()
-                .logout()
-                    .permitAll();*//*
+
+//.authorizeRequests()
+//                    .antMatchers("/").permitAll()
+//                    .anyRequest().authenticated()
+//                    .and()
+//                .formLogin()
+//                    .loginPage("/login")
+//                    .permitAll()
+//                    .and()
+//                .logout()
+//                    .permitAll();
 
 
         // TODO secure vizsga indito oldal legalabb csak a Teacher role indithat vizsgat
-//        http.httpBasic().and().authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/protected").hasRole("USER")
-//                .antMatchers("/admin").hasRole("ADMIN");
+        http.httpBasic().and().authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/protected").hasRole("USER")
+                .antMatchers("/admin").hasRole("ADMIN");
     }
 
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService(){
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                    .username("user")
-//                    .password("password")
-//                    .roles("USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(user);
-//    }
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService(){
+        UserDetails user =
+                User.withDefaultPasswordEncoder()
+                    .username("user")
+                    .password("password")
+                    .roles("USER")
+                .build();
+        return new InMemoryUserDetailsManager(user);
+    }
 
-//    @Override
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(new CustomAuthenticationProvider(userService));
     }
 }
+
 */

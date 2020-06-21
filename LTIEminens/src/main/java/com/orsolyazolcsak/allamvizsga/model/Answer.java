@@ -97,4 +97,14 @@ public class Answer {
 	public boolean getAnswerIsCorrect() {
 		return answerIsCorrect;
 	}
+
+	@Override
+	public String toString() {
+		return "Answer{" +
+				"id=" + id +
+				", answerIsCorrect=" + answerIsCorrect +
+				", user=" + user +
+				", problem=" + problem +
+				'}';
+	}
 }

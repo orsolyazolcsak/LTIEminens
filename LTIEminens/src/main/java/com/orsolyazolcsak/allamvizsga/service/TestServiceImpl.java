@@ -29,6 +29,7 @@ public class TestServiceImpl implements TestService {
         if (problems.size() < 9) {
             problems.clear();
         }
+        System.out.println("generated problems = " + problems);
         return problems;
     }
 

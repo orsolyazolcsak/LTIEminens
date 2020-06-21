@@ -45,7 +45,7 @@ public class Problem implements Comparable<Problem> {
     private String incorrectAnswer3;
 
     @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             mappedBy = "problem")
     private List<UsedHelp> usedHelp;
 
@@ -53,7 +53,7 @@ public class Problem implements Comparable<Problem> {
     private Difficulty difficulty;
 
     @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             mappedBy = "problem")
     private List<Answer> answer;
 
@@ -177,6 +177,10 @@ public class Problem implements Comparable<Problem> {
 
     @Override
     public int compareTo(Problem o) {
-        return id.compareTo(o.id);
+	    int difficultyCompared = difficulty.compareTo(o.difficulty);
+	    if (difficultyCompared == 0) {
+            return id.compareTo(o.id);
+        }
+	    return difficultyCompared;
     }
 }

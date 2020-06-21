@@ -1,10 +1,9 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import javax.persistence.*;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Entity
 @Table(name = "exam")
@@ -23,18 +22,8 @@ public class Exam {
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "exam")
-    private List<UsedHelp> usedHelp;
-
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "exam")
-    private List<Answer> answer;
-
     @ManyToMany
-    private Set<Problem> problems = new HashSet<Problem>();
+    private Set<Problem> problems = new TreeSet<>();
 
     public Exam() {
     }
@@ -63,28 +52,14 @@ public class Exam {
         this.test = test;
     }
 
-    public List<UsedHelp> getUsedHelp() {
-        return usedHelp;
-    }
-
-    public void setUsedHelp(List<UsedHelp> usedHelp) {
-        this.usedHelp = usedHelp;
-    }
-
-    public List<Answer> getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(List<Answer> answer) {
-        this.answer = answer;
-    }
-
     public Set<Problem> getProblems() {
         return problems;
     }
 
     public void setProblems(Set<Problem> problems) {
-        this.problems = problems;
+
+        this.problems = new TreeSet<>(problems);
+        System.out.println("set problems in exam " + id + " problems = " + problems);
     }
 
     @Override
@@ -93,9 +68,22 @@ public class Exam {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", test=" + test +
-                ", usedHelp=" + usedHelp +
-                ", answer=" + answer +
                 ", problems=" + problems +
                 '}';
+    }
+
+    // implementaljuk az equals metodust hogy az examcontroller startedExams hashMap mezojeben megatalajuk
+    // az examService.findById altal visszateritett examot
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Exam exam = (Exam) o;
+        return id.equals(exam.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
