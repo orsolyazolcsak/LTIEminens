@@ -1,3 +1,4 @@
+com\orsolyazolcsak\allamvizsga\securingweb\CustomAuthenticationProvider.class
 com\orsolyazolcsak\allamvizsga\service\ProblemService.class
 com\orsolyazolcsak\allamvizsga\repository\ProblemRepository.class
 com\orsolyazolcsak\allamvizsga\model\StartedExam.class
@@ -21,6 +22,7 @@ com\orsolyazolcsak\allamvizsga\repository\RoleRepository.class
 com\orsolyazolcsak\allamvizsga\model\Test.class
 com\orsolyazolcsak\allamvizsga\service\ExamService.class
 com\orsolyazolcsak\allamvizsga\service\ProblemServiceImpl.class
+com\orsolyazolcsak\allamvizsga\securingweb\WebSecurityConfig.class
 com\orsolyazolcsak\allamvizsga\service\DifficultyServiceImpl.class
 com\orsolyazolcsak\allamvizsga\repository\UserRepository.class
 com\orsolyazolcsak\allamvizsga\model\Role.class
@@ -35,6 +37,7 @@ com\orsolyazolcsak\allamvizsga\controller\LoginController.class
 com\orsolyazolcsak\allamvizsga\repository\TestRepository.class
 com\orsolyazolcsak\allamvizsga\service\RoleServiceImpl.class
 com\orsolyazolcsak\allamvizsga\controller\RegisterController.class
+com\orsolyazolcsak\allamvizsga\model\AuthenticationMessage.class
 com\orsolyazolcsak\allamvizsga\service\TestServiceImpl.class
 com\orsolyazolcsak\allamvizsga\dao\AnswerDAO.class
 com\orsolyazolcsak\allamvizsga\repository\AnswerRepository.class

@@ -1,9 +1,7 @@
-/*
 package com.orsolyazolcsak.allamvizsga.securingweb;
 
 import com.orsolyazolcsak.allamvizsga.model.User;
 import com.orsolyazolcsak.allamvizsga.service.UserService;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,6 +24,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        System.out.println("CustomAuthenticationProvider.authenticate");
         String username = authentication.getName();
         char[] password = authentication.getCredentials().toString().toCharArray();
         boolean passwordIsCorrect = userService.checkUser(username, password);
@@ -40,6 +39,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             grantedAuthorities.add(new SimpleGrantedAuthority(roleDescription));
         }
         Authentication auth = new UsernamePasswordAuthenticationToken(username, password, grantedAuthorities);
+        System.out.println("auth = " + auth);
         return auth;
     }
 
@@ -48,4 +48,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return true;
     }
 }
-*/
+
