@@ -4,9 +4,11 @@ com\orsolyazolcsak\allamvizsga\repository\ProblemRepository.class
 com\orsolyazolcsak\allamvizsga\model\StartedExam.class
 com\orsolyazolcsak\allamvizsga\service\AnswerService.class
 com\orsolyazolcsak\allamvizsga\service\UserService.class
+com\orsolyazolcsak\allamvizsga\repository\HelpRepository.class
 com\orsolyazolcsak\allamvizsga\service\TestService.class
 com\orsolyazolcsak\allamvizsga\service\UserServiceImpl.class
 com\orsolyazolcsak\allamvizsga\repository\DifficultyRepository.class
+com\orsolyazolcsak\allamvizsga\service\HelpServiceImpl.class
 com\orsolyazolcsak\allamvizsga\Application.class
 com\orsolyazolcsak\allamvizsga\dao\ProblemDAO.class
 com\orsolyazolcsak\allamvizsga\dao\ExamDAO.class
@@ -26,6 +28,8 @@ com\orsolyazolcsak\allamvizsga\securingweb\WebSecurityConfig.class
 com\orsolyazolcsak\allamvizsga\service\DifficultyServiceImpl.class
 com\orsolyazolcsak\allamvizsga\repository\UserRepository.class
 com\orsolyazolcsak\allamvizsga\model\Role.class
+com\orsolyazolcsak\allamvizsga\repository\UsedHelpRepository.class
+com\orsolyazolcsak\allamvizsga\service\HelpService.class
 com\orsolyazolcsak\allamvizsga\service\UserDao.class
 com\orsolyazolcsak\allamvizsga\model\User.class
 com\orsolyazolcsak\allamvizsga\service\AnswerServiceImpl.class
@@ -35,10 +39,12 @@ com\orsolyazolcsak\allamvizsga\controller\ProblemController.class
 com\orsolyazolcsak\allamvizsga\model\Help.class
 com\orsolyazolcsak\allamvizsga\controller\LoginController.class
 com\orsolyazolcsak\allamvizsga\repository\TestRepository.class
+com\orsolyazolcsak\allamvizsga\service\UsedHelpService.class
 com\orsolyazolcsak\allamvizsga\service\RoleServiceImpl.class
 com\orsolyazolcsak\allamvizsga\controller\RegisterController.class
 com\orsolyazolcsak\allamvizsga\model\AuthenticationMessage.class
 com\orsolyazolcsak\allamvizsga\service\TestServiceImpl.class
+com\orsolyazolcsak\allamvizsga\service\UsedHelpServiceImpl.class
 com\orsolyazolcsak\allamvizsga\dao\AnswerDAO.class
 com\orsolyazolcsak\allamvizsga\repository\AnswerRepository.class
 com\orsolyazolcsak\allamvizsga\controller\TestController.class

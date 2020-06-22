@@ -25,11 +25,8 @@ public class UsedHelp {
     @JoinColumn(name = "problem_id", nullable = false)
     private Problem problem;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "answer_id", nullable = false)
-    private Problem answer;
     @ManyToOne(optional = false)
-    private Exam exams;
+    private Exam exam;
 
     public UsedHelp() {
 
@@ -67,19 +64,11 @@ public class UsedHelp {
         this.problem = problem;
     }
 
-    public Problem getAnswer() {
-        return answer;
+    public Exam getExam() {
+        return exam;
     }
 
-    public void setAnswer(Problem answer) {
-        this.answer = answer;
-    }
-
-    public Exam getExams() {
-        return exams;
-    }
-
-    public void setExams(Exam exams) {
-        this.exams = exams;
+    public void setExam(Exam exam) {
+        this.exam = exam;
     }
 }

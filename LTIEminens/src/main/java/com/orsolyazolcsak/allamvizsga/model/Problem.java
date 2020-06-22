@@ -1,25 +1,8 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import javax.persistence.*;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Problem implements Comparable<Problem> {
@@ -44,10 +27,11 @@ public class Problem implements Comparable<Problem> {
     @Column(name = "incorrect_answer3")
     private String incorrectAnswer3;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
+
+   /* @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
             mappedBy = "problem")
-    private List<UsedHelp> usedHelp;
+    private List<UsedHelp> usedHelp;*/
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Difficulty difficulty;
@@ -57,7 +41,7 @@ public class Problem implements Comparable<Problem> {
             mappedBy = "problem")
     private List<Answer> answer;
 
-    @JsonIgnore
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
@@ -99,13 +83,13 @@ public class Problem implements Comparable<Problem> {
         this.incorrectAnswer3 = incorrectAnswer3;
     }
 
-    public List<UsedHelp> getUsedHelp() {
+   /* public List<UsedHelp> getUsedHelp() {
         return usedHelp;
     }
 
     public void setUsedHelp(List<UsedHelp> usedHelp) {
         this.usedHelp = usedHelp;
-    }
+    }*/
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -168,9 +152,8 @@ public class Problem implements Comparable<Problem> {
 				", incorrectAnswer1='" + incorrectAnswer1 + '\'' +
 				", incorrectAnswer2='" + incorrectAnswer2 + '\'' +
 				", incorrectAnswer3='" + incorrectAnswer3 + '\'' +
-				", usedHelp=" + usedHelp +
+
 				", difficulty=" + difficulty +
-				", answer=" + answer +
 				", test=" + test +
 				'}';
 	}

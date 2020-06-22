@@ -20,16 +20,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.userService = userService;
     }
 
-    // TODO megnezni hogy kell hasznalni ezt reacttel meg minden. tortenet. https://dzone.com/articles/integrating-spring-boot-and-react-with-spring-secu-1
-//    @Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-            .antMatchers("/login").permitAll()
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/test/new/**").hasAuthority("Teacher")
                 .antMatchers("/test").hasAuthority("Teacher")
-            .and().httpBasic()
+                .antMatchers("/exam/new/**").hasAuthority("Teacher")
+                .and().httpBasic()
         ;
 
 //        http
