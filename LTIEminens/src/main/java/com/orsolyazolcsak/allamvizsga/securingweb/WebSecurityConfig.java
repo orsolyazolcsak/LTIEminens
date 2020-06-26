@@ -30,35 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/test/new/**").hasAuthority("Teacher")
                 .antMatchers("/test").hasAuthority("Teacher")
                 .antMatchers("/exam/new/**").hasAuthority("Teacher")
+                .antMatchers("/exam/start/**").hasAuthority("Teacher")
+                .antMatchers("/exam/currentQuestion/**").hasAnyAuthority("Teacher", "WatcherStudent", "TestTakerStudent")
+                .antMatchers("/exam/currentQuestion/**/fiftyFifty").hasAnyAuthority("Teacher", "WatcherStudent", "TestTakerStudent")
+                .antMatchers("/exam/currentQuestion/**/askTheAudience").hasAnyAuthority("Teacher", "WatcherStudent", "TestTakerStudent")
                 .and().httpBasic()
         ;
-
-//        http
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and()
-//                //.formLogin().and()
-//                .httpBasic();
-
-//.authorizeRequests()
-//                    .antMatchers("/").permitAll()
-//                    .anyRequest().authenticated()
-//                    .and()
-//                .formLogin()
-//                    .loginPage("/login")
-//                    .permitAll()
-//                    .and()
-//                .logout()
-//                    .permitAll();
-
-
-        // TODO secure vizsga indito oldal legalabb csak a Teacher role indithat vizsgat
-//        http.httpBasic().and().authorizeRequests()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/protected").hasRole("USER")
-//                .antMatchers("/admin").hasRole("ADMIN");
     }
 
     @Override

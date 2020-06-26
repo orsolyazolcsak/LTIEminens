@@ -11,8 +11,13 @@ import java.util.Set;
 @Service
 public class RoleServiceImpl implements RoleService {
 
+
+    private final RoleRepository repository;
+
     @Autowired
-    private RoleRepository repository;
+    public RoleServiceImpl(RoleRepository repository){
+        this.repository = repository;
+    }
 
     @Override
     public Set<Role> findAll() {

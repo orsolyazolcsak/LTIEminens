@@ -44,6 +44,7 @@ C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvi
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\ProblemService.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\dao\ProblemDAO.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\RoleServiceImpl.java
+C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\dao\AskTheAudienceDAO.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\AnswerRepository.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\controller\RegisterController.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\securingweb\WebSecurityConfig.java

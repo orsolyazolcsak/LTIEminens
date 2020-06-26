@@ -9,6 +9,7 @@ import com.orsolyazolcsak.allamvizsga.model.Problem;
 import com.orsolyazolcsak.allamvizsga.model.StartedExam;
 import com.orsolyazolcsak.allamvizsga.service.AnswerService;
 import com.orsolyazolcsak.allamvizsga.service.ExamService;
+import com.orsolyazolcsak.allamvizsga.service.HelpService;
 import com.orsolyazolcsak.allamvizsga.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,25 +18,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/exam")
 public class ExamController {
-    public static final Long DURATION_OF_QUESTION = 10L;
+    public static final Long DURATION_OF_QUESTION = 30L;
     private final ExamService examService;
     private final ProblemService problemService;
     private final AnswerService answerService;
+    private final HelpService helpService;
     private Map<Exam, StartedExam> startedExams;
 
 
     @Autowired
-    public ExamController(ExamService examService, ProblemService problemService, AnswerService answerService) {
+    public ExamController(ExamService examService, ProblemService problemService, AnswerService answerService, HelpService helpService) {
         this.examService = examService;
         this.problemService = problemService;
         this.answerService = answerService;
+        this.helpService = helpService;
         startedExams = new HashMap<>();
     }
 
@@ -119,6 +120,30 @@ public class ExamController {
         Answer savedAnswer = answerService.save(answerService.toAnswer(answerDAO));
         System.out.println("savedAnswer = " + savedAnswer);
         return new ResponseEntity<>(answerDAO, HttpStatus.OK);
+    }
+
+    @SuppressWarnings("MVCPathVariableInspection")
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/currentQuestion/{examId}/fiftyFifty", consumes = {MediaType.APPLICATION_JSON_VALUE})
+     public ResponseEntity<Set<String>> fiftyFifty(@RequestBody ProblemDAO problemDAO){
+        Optional<Problem> problem = problemService.findById(problemDAO.getId());
+        //noinspection OptionalIsPresent
+        if(!problem.isPresent()){
+            return new ResponseEntity<>(new HashSet<>(), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(helpService.fiftyFifty(problem.get()), HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/currentQuestion/{examId}/askTheAudience", consumes = {MediaType.APPLICATION_JSON_VALUE})
+     public ResponseEntity<Map<String, Long>> askTheAudience(@RequestBody ProblemDAO problemDAO, @PathVariable Long examId){
+        Optional<Problem> problem = problemService.findById(problemDAO.getId());
+
+        Optional<Exam> exam = examService.findById(examId);
+        if(!problem.isPresent() || !exam.isPresent()){
+            return new ResponseEntity<>(new HashMap<>(), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(answerService.askTheAudience(exam.get(), problem.get()).getAudienceAnswers(), HttpStatus.OK);
     }
 
     private ResponseEntity<AnswerDAO> getInvalidAnswerResponse(AnswerDAO answerDAO) {

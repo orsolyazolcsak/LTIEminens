@@ -7,7 +7,6 @@ import com.orsolyazolcsak.allamvizsga.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -30,7 +29,7 @@ public class ExamServiceImpl implements ExamService {
     @Override
     public Optional<Exam> createNewExam(Long testId, String examName){
         Exam exam = new Exam();
-        exam.setProblems(testService.getYourProblemsTogether(testId));
+        exam.setProblems(testService.composeTestWithRandomizedProblems(testId));
         exam.setName(examName);
         Optional<Test> test = testService.findById(testId);
         if(test.isPresent()){

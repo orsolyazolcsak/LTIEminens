@@ -45,4 +45,8 @@ public class Role {
 	public String getDescription() {
 		return description;
 	}
+
+    public boolean isWatcher() {
+		return description.equals("WatcherStudent");
+    }
 }

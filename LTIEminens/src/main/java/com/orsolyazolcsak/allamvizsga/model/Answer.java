@@ -1,6 +1,7 @@
 package com.orsolyazolcsak.allamvizsga.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Answer {
@@ -11,6 +12,9 @@ public class Answer {
 
     @Column(name = "answer_is_correct")
     private boolean answerIsCorrect;
+
+    @Column(name = "answer")
+    private String answer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -27,6 +31,14 @@ public class Answer {
 
     public Answer() {
 
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public Long getId() {
@@ -81,5 +93,23 @@ public class Answer {
                 ", user=" + user +
                 ", problem=" + problem +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Answer answer1 = (Answer) o;
+        return answerIsCorrect == answer1.answerIsCorrect &&
+                Objects.equals(id, answer1.id) &&
+                Objects.equals(answer, answer1.answer) &&
+                Objects.equals(user, answer1.user) &&
+                Objects.equals(problem, answer1.problem) &&
+                Objects.equals(exam, answer1.exam);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, answerIsCorrect, answer, user, problem, exam);
     }
 }

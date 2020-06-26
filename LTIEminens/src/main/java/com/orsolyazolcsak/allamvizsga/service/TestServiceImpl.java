@@ -21,7 +21,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public Set<Problem> getYourProblemsTogether(Long testId){
+    public Set<Problem> composeTestWithRandomizedProblems(Long testId){
         Set<Problem> problems = new TreeSet<>();
         problems.addAll(getThreeProblemsOfGivenTestAndDifficulty(testId, (long) 1));
         problems.addAll(getThreeProblemsOfGivenTestAndDifficulty(testId, (long) 2));

@@ -12,5 +12,6 @@ public interface ExamService {
     Optional<Exam> createNewExam(Long testId, String examName);
 
     Optional<Exam> findById(Long id);
+
     ExamDAO toDao(Exam exam);
 }

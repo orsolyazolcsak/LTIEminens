@@ -12,7 +12,6 @@ public class UsedHelp {
     @SequenceGenerator(name = "usedHelp_Sequence", sequenceName = "USEDHELP_SEQ")
     private Long id;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "help_id", nullable = false)
     private Help help;
@@ -20,6 +19,7 @@ public class UsedHelp {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "problem_id", nullable = false)

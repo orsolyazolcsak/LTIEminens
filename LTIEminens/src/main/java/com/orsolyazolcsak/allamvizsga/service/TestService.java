@@ -13,5 +13,5 @@ public interface TestService {
 
     Optional<Test> findById(Long id);
 
-    public Set<Problem> getYourProblemsTogether(Long testId);
+    public Set<Problem> composeTestWithRandomizedProblems(Long testId);
 }
