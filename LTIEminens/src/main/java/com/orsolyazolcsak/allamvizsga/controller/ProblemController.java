@@ -18,7 +18,7 @@ public class ProblemController {
     private ProblemService problemService;
 
     @GetMapping
-    public Set<Problem> getTests() {
+    public Set<Problem> getProblems() {
         return problemService.findAll();
     }
 
@@ -31,7 +31,6 @@ public class ProblemController {
     Optional<Problem> one(@PathVariable Long id) {
 
         return problemService.findById(id);
-        //.orElseThrow(()-> new ProblemNotFoundException(id));
     }
 
     @DeleteMapping("/{id}")

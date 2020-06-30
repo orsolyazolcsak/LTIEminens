@@ -3,14 +3,8 @@ package com.orsolyazolcsak.allamvizsga.controller;
 import com.orsolyazolcsak.allamvizsga.dao.AnswerDAO;
 import com.orsolyazolcsak.allamvizsga.dao.ExamDAO;
 import com.orsolyazolcsak.allamvizsga.dao.ProblemDAO;
-import com.orsolyazolcsak.allamvizsga.model.Answer;
-import com.orsolyazolcsak.allamvizsga.model.Exam;
-import com.orsolyazolcsak.allamvizsga.model.Problem;
-import com.orsolyazolcsak.allamvizsga.model.StartedExam;
-import com.orsolyazolcsak.allamvizsga.service.AnswerService;
-import com.orsolyazolcsak.allamvizsga.service.ExamService;
-import com.orsolyazolcsak.allamvizsga.service.HelpService;
-import com.orsolyazolcsak.allamvizsga.service.ProblemService;
+import com.orsolyazolcsak.allamvizsga.model.*;
+import com.orsolyazolcsak.allamvizsga.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,15 +22,17 @@ public class ExamController {
     private final ProblemService problemService;
     private final AnswerService answerService;
     private final HelpService helpService;
+    private final UserService userService;
     private Map<Exam, StartedExam> startedExams;
 
 
     @Autowired
-    public ExamController(ExamService examService, ProblemService problemService, AnswerService answerService, HelpService helpService) {
+    public ExamController(ExamService examService, ProblemService problemService, AnswerService answerService, HelpService helpService, UserService userService) {
         this.examService = examService;
         this.problemService = problemService;
         this.answerService = answerService;
         this.helpService = helpService;
+        this.userService = userService;
         startedExams = new HashMap<>();
     }
 
@@ -125,10 +121,10 @@ public class ExamController {
     @SuppressWarnings("MVCPathVariableInspection")
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/currentQuestion/{examId}/fiftyFifty", consumes = {MediaType.APPLICATION_JSON_VALUE})
-     public ResponseEntity<Set<String>> fiftyFifty(@RequestBody ProblemDAO problemDAO){
+    public ResponseEntity<Set<String>> fiftyFifty(@RequestBody ProblemDAO problemDAO) {
         Optional<Problem> problem = problemService.findById(problemDAO.getId());
         //noinspection OptionalIsPresent
-        if(!problem.isPresent()){
+        if (!problem.isPresent()) {
             return new ResponseEntity<>(new HashSet<>(), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(helpService.fiftyFifty(problem.get()), HttpStatus.OK);
@@ -136,14 +132,38 @@ public class ExamController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value = "/currentQuestion/{examId}/askTheAudience", consumes = {MediaType.APPLICATION_JSON_VALUE})
-     public ResponseEntity<Map<String, Long>> askTheAudience(@RequestBody ProblemDAO problemDAO, @PathVariable Long examId){
+    public ResponseEntity<Map<String, Long>> askTheAudience(@RequestBody ProblemDAO problemDAO, @PathVariable Long examId) {
         Optional<Problem> problem = problemService.findById(problemDAO.getId());
 
         Optional<Exam> exam = examService.findById(examId);
-        if(!problem.isPresent() || !exam.isPresent()){
+        if (!problem.isPresent() || !exam.isPresent()) {
             return new ResponseEntity<>(new HashMap<>(), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(answerService.askTheAudience(exam.get(), problem.get()).getAudienceAnswers(), HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/currentQuestion/{examId}/phoneAFriendGetWatchers", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Set<String>> phoneAFriendGetWatchers(@RequestBody ProblemDAO problemDAO, @PathVariable Long examId) {
+        Optional<Problem> problem = problemService.findById(problemDAO.getId());
+        Optional<Exam> exam = examService.findById(examId);
+        if (!problem.isPresent() || !exam.isPresent()) {
+            return new ResponseEntity<>(new HashSet<>(), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(answerService.findWatchersWhoAnswered(exam.get(), problem.get()), HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping(value = "/currentQuestion/{examId}/phoneAFriend/{username}", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<String> phoneAFriendGetAnswer(@RequestBody ProblemDAO problemDAO, @PathVariable Long examId, @PathVariable String username) {
+        Optional<Problem> problem = problemService.findById(problemDAO.getId());
+        Optional<Exam> exam = examService.findById(examId);
+        Optional<User> byUsername = userService.findByUsername(username);
+        if (!problem.isPresent() || !exam.isPresent() || !byUsername.isPresent()) {
+            return new ResponseEntity<>("\"User didn't answer\"", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>("\"" + answerService.phoneAFriend(exam.get(), problem.get(),
+                byUsername.get()).orElse("User didn't answer") + "\"", HttpStatus.OK);
     }
 
     private ResponseEntity<AnswerDAO> getInvalidAnswerResponse(AnswerDAO answerDAO) {

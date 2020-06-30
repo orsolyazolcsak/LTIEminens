@@ -27,12 +27,6 @@ public class Problem implements Comparable<Problem> {
     @Column(name = "incorrect_answer3")
     private String incorrectAnswer3;
 
-
-   /* @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "problem")
-    private List<UsedHelp> usedHelp;*/
-
     @ManyToOne(fetch = FetchType.EAGER)
     private Difficulty difficulty;
 
@@ -41,11 +35,11 @@ public class Problem implements Comparable<Problem> {
             mappedBy = "problem")
     private List<Answer> answer;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
-
+    @ManyToMany(mappedBy = "problems")
+    private Collection<Exam> exams;
 
     public Problem() {
 
@@ -82,14 +76,6 @@ public class Problem implements Comparable<Problem> {
     public void setIncorrectAnswer3(String incorrectAnswer3) {
         this.incorrectAnswer3 = incorrectAnswer3;
     }
-
-   /* public List<UsedHelp> getUsedHelp() {
-        return usedHelp;
-    }
-
-    public void setUsedHelp(List<UsedHelp> usedHelp) {
-        this.usedHelp = usedHelp;
-    }*/
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -131,39 +117,35 @@ public class Problem implements Comparable<Problem> {
         this.question = question;
     }
 
+    public Collection<Exam> getExams() {
+        return exams;
+    }
 
-	@ManyToMany(mappedBy = "problems")
-	private Collection<Exam> exams;
+    public void setExams(Collection<Exam> exams) {
+        this.exams = exams;
+    }
 
-	public Collection<Exam> getExams() {
-		return exams;
-	}
+    @Override
+    public String toString() {
+        return "Problem{" +
+                "id=" + id +
+                ", question='" + question + '\'' +
+                ", correctAnswer='" + correctAnswer + '\'' +
+                ", incorrectAnswer1='" + incorrectAnswer1 + '\'' +
+                ", incorrectAnswer2='" + incorrectAnswer2 + '\'' +
+                ", incorrectAnswer3='" + incorrectAnswer3 + '\'' +
 
-	public void setExams(Collection<Exam> exams) {
-		this.exams = exams;
-	}
-
-	@Override
-	public String toString() {
-		return "Problem{" +
-				"id=" + id +
-				", question='" + question + '\'' +
-				", correctAnswer='" + correctAnswer + '\'' +
-				", incorrectAnswer1='" + incorrectAnswer1 + '\'' +
-				", incorrectAnswer2='" + incorrectAnswer2 + '\'' +
-				", incorrectAnswer3='" + incorrectAnswer3 + '\'' +
-
-				", difficulty=" + difficulty +
-				", test=" + test +
-				'}';
-	}
+                ", difficulty=" + difficulty +
+                ", test=" + test +
+                '}';
+    }
 
     @Override
     public int compareTo(Problem o) {
-	    int difficultyCompared = difficulty.compareTo(o.difficulty);
-	    if (difficultyCompared == 0) {
+        int difficultyCompared = difficulty.compareTo(o.difficulty);
+        if (difficultyCompared == 0) {
             return id.compareTo(o.id);
         }
-	    return difficultyCompared;
+        return difficultyCompared;
     }
 }

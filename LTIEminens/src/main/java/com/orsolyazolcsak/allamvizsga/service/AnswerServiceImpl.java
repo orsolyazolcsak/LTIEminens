@@ -21,16 +21,14 @@ public class AnswerServiceImpl implements AnswerService {
     private UserService userService;
     private ExamService examService;
     private ProblemService problemService;
-    private RoleService roleService;
 
     @Autowired
     public AnswerServiceImpl(AnswerRepository answerRepository, UserService userService, ExamService examService,
-                             ProblemService problemService, RoleService roleService) {
+                             ProblemService problemService) {
         this.answerRepository = answerRepository;
         this.userService = userService;
         this.examService = examService;
         this.problemService = problemService;
-        this.roleService = roleService;
     }
 
     @Override
@@ -69,16 +67,24 @@ public class AnswerServiceImpl implements AnswerService {
     public Set<Answer> findByExamAndProblem(Exam exam, Problem problem) {
         return answerRepository.findByExamAndProblem(exam, problem);
     }
-
+    @Override
     public Set<Answer> findByExamAndProblemAndWatcher(Exam exam, Problem problem) {
         return this.findByExamAndProblem(exam, problem).stream()
-                .filter(p -> p.getUser().getRole().isWatcher()).collect(Collectors.toSet());
+                .filter(answer -> answer.getUser().getRole().isWatcher()).collect(Collectors.toSet());
+    }
+    @Override
+    public Set<String> findWatchersWhoAnswered(Exam exam, Problem problem) {
+        return this.findByExamAndProblem(exam, problem).stream()
+                .filter(answer -> answer.getUser().getRole().isWatcher())
+                .map(answer -> answer.getUser().getUsername())
+                .collect(Collectors.toSet());
     }
 
     @Override
     public AskTheAudienceDAO askTheAudience(Exam exam, Problem problem) {
         Set<Answer> answers = this.findByExamAndProblemAndWatcher(exam, problem);
-        Map<String, Long> audienceAnswers = answers.stream().collect(Collectors.groupingBy(Answer::getAnswer, Collectors.counting()));
+        Map<String, Long> audienceAnswers = answers.stream()
+                .collect(Collectors.groupingBy(Answer::getAnswer, Collectors.counting()));
         return new AskTheAudienceDAO(audienceAnswers);
     }
 
