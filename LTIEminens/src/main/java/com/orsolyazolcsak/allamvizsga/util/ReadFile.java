@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,16 +32,14 @@ public class ReadFile {
         this.problemService = problemService;
     }
 
-    public static void main(String[] args) throws Exception {
-//        applyToAllTestDataFiles(System.out::println);
-    }
-
     public void readTestData() {
         applyToAllTestDataFiles(this::readTestsFromFile);
     }
+
     private void applyToAllTestDataFiles(Consumer<Path> consumer) {
         Stream<Path> list = null;
-        try {URI resourceFolder = ReadFile.class.getResource("/test_data").toURI();
+        try {
+            URI resourceFolder = ReadFile.class.getResource("/test_data").toURI();
             list = Files.list(Paths.get(resourceFolder));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();

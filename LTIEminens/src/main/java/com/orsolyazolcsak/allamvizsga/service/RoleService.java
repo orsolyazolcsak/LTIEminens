@@ -8,7 +8,9 @@ import java.util.Set;
 public interface RoleService {
 
     Set<Role> findAll();
+
     void createNewRole(Role newRole);
+
     Optional<Role> findById(Long id);
 
 }

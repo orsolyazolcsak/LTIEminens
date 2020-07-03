@@ -1,13 +1,12 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
-import java.util.*;
-
 import com.orsolyazolcsak.allamvizsga.dao.ProblemDAO;
+import com.orsolyazolcsak.allamvizsga.model.Problem;
+import com.orsolyazolcsak.allamvizsga.repository.ProblemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.orsolyazolcsak.allamvizsga.model.Problem;
-import com.orsolyazolcsak.allamvizsga.repository.ProblemRepository;
+import java.util.*;
 
 @Service
 public class ProblemServiceImpl implements ProblemService {

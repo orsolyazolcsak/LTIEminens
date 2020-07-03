@@ -1,10 +1,7 @@
 package com.orsolyazolcsak.allamvizsga.service;
 
-import com.orsolyazolcsak.allamvizsga.model.Answer;
 import com.orsolyazolcsak.allamvizsga.model.Problem;
-import com.orsolyazolcsak.allamvizsga.model.User;
 import com.orsolyazolcsak.allamvizsga.repository.HelpRepository;
-import com.orsolyazolcsak.allamvizsga.repository.UsedHelpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +19,7 @@ public class HelpServiceImpl implements HelpService {
     }
 
     @Override
-    public Set<String> fiftyFifty(Problem problem){
+    public Set<String> fiftyFifty(Problem problem) {
         Set<String> wrongAnswers = new HashSet<>();
         wrongAnswers.add(problem.getIncorrectAnswer1());
         wrongAnswers.add(problem.getIncorrectAnswer2());

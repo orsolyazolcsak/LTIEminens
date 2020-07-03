@@ -27,16 +27,15 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
-    public Optional<Exam> createNewExam(Long testId, String examName){
+    public Optional<Exam> createNewExam(Long testId, String examName) {
         Exam exam = new Exam();
         exam.setProblems(testService.composeTestWithRandomizedProblems(testId));
         exam.setName(examName);
         Optional<Test> test = testService.findById(testId);
-        if(test.isPresent()){
+        if (test.isPresent()) {
             exam.setTest(test.get());
             return Optional.of(examRepository.save(exam));
-        }
-        else{
+        } else {
             return Optional.empty();
         }
     }

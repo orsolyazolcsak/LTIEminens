@@ -67,11 +67,13 @@ public class AnswerServiceImpl implements AnswerService {
     public Set<Answer> findByExamAndProblem(Exam exam, Problem problem) {
         return answerRepository.findByExamAndProblem(exam, problem);
     }
+
     @Override
     public Set<Answer> findByExamAndProblemAndWatcher(Exam exam, Problem problem) {
         return this.findByExamAndProblem(exam, problem).stream()
                 .filter(answer -> answer.getUser().getRole().isWatcher()).collect(Collectors.toSet());
     }
+
     @Override
     public Set<String> findWatchersWhoAnswered(Exam exam, Problem problem) {
         return this.findByExamAndProblem(exam, problem).stream()
