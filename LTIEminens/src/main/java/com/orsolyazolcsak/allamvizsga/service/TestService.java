@@ -9,9 +9,11 @@ import java.util.Set;
 public interface TestService {
     Set<Test> findAll();
 
-    void createNewTest(Test newTest);
+    Test createNewTest(Test newTest);
 
     Optional<Test> findById(Long id);
 
     public Set<Problem> composeTestWithRandomizedProblems(Long testId);
+
+    Optional<Test> findByName(String testName);
 }

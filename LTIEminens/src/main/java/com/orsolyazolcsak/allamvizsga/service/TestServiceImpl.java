@@ -33,6 +33,11 @@ public class TestServiceImpl implements TestService {
         return problems;
     }
 
+    @Override
+    public Optional<Test> findByName(String testName) {
+        return repository.findByName(testName);
+    }
+
     public Set<Problem> getThreeProblemsOfGivenTestAndDifficulty(Long testId, Long difficultyId) {
         Set<Problem> problems = problemService.findProblemsByDifficultyIdAndTestId(difficultyId, testId);
         if (problems.size() > 3) {
@@ -71,8 +76,8 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public void createNewTest(Test newTest) {
-        repository.save(newTest);
+    public Test createNewTest(Test newTest) {
+        return repository.save(newTest);
     }
 
     @Override

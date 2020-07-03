@@ -5,9 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import com.orsolyazolcsak.allamvizsga.model.Difficulty;
 
+import java.util.Optional;
+
 @Repository
 public interface DifficultyRepository extends JpaRepository<Difficulty, Long> {
-	
-	//Iterable<Difficulty> findAll();
+    Optional<Difficulty> findById(Long id);
+
+    //Iterable<Difficulty> findAll();
 
 }

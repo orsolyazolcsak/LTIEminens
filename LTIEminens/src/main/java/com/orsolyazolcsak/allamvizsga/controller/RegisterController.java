@@ -1,9 +1,8 @@
 package com.orsolyazolcsak.allamvizsga.controller;
 
-import com.orsolyazolcsak.allamvizsga.model.Role;
 import com.orsolyazolcsak.allamvizsga.model.User;
 import com.orsolyazolcsak.allamvizsga.service.RoleService;
-import com.orsolyazolcsak.allamvizsga.service.UserDao;
+import com.orsolyazolcsak.allamvizsga.dao.UserDao;
 import com.orsolyazolcsak.allamvizsga.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,8 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-import java.util.Set;
+
 
 @RestController
 @RequestMapping("/register")

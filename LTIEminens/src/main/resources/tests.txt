@@ -1,0 +1,21 @@
+A beolvasott teszt neve
+E	Kérdés1	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+E	Kérdés2	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+E	Kérdés3	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+E	Kérdés4	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+E	Kérdés5	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+E	Kérdés6	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+M	Kérdés7	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+M	Kérdés8	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+M	Kérdés9	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+M	Kérdés10	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+M	Kérdés11	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+M	Kérdés12	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+M	Kérdés13	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+H	Kérdés14	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+H	Kérdés15	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+H	Kérdés16	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+H	Kérdés17	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+H	Kérdés18	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+H	Kérdés19	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3
+H	Kérdés20	Helyes válasz	Helytelen válasz 1	Helytelen válasz 2	Helytelen válasz 3

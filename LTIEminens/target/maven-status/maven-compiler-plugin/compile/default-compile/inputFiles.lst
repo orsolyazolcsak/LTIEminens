@@ -9,15 +9,15 @@ C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvi
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\controller\ExamController.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\RoleRepository.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\HelpServiceImpl.java
+C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\dao\UserDao.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\UsedHelp.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\controller\HomeController.java
+C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\dao\LoginUserDao.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\UserService.java
-C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\UserDao.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\controller\ProblemController.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\StartedExam.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\UsedHelpServiceImpl.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\ProblemServiceImpl.java
-C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\LoginUserDao.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\DifficultyRepository.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\User.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\AuthenticationMessage.java
@@ -39,6 +39,7 @@ C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvi
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\TestServiceImpl.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\model\Problem.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\HelpService.java
+C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\util\ReadFile.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\repository\HelpRepository.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\ExamServiceImpl.java
 C:\Users\Orsi\git\LTIEminens\LTIEminens\src\main\java\com\orsolyazolcsak\allamvizsga\service\ProblemService.java

@@ -5,7 +5,7 @@ import com.orsolyazolcsak.allamvizsga.model.Role;
 import com.orsolyazolcsak.allamvizsga.model.User;
 import com.orsolyazolcsak.allamvizsga.repository.UserRepository;
 import com.orsolyazolcsak.allamvizsga.service.RoleService;
-import com.orsolyazolcsak.allamvizsga.service.UserDao;
+import com.orsolyazolcsak.allamvizsga.dao.UserDao;
 import com.orsolyazolcsak.allamvizsga.service.UserService;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;

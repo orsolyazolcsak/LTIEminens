@@ -1,4 +1,4 @@
-package com.orsolyazolcsak.allamvizsga.service;
+package com.orsolyazolcsak.allamvizsga.dao;
 
 public class UserDao {
     private Long id;
