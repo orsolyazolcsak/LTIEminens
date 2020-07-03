@@ -17,7 +17,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/exam")
 public class ExamController {
-    public static final Long DURATION_OF_QUESTION = 30L;
+    public static final Long DURATION_OF_QUESTION = 50L;
     private final ExamService examService;
     private final ProblemService problemService;
     private final AnswerService answerService;

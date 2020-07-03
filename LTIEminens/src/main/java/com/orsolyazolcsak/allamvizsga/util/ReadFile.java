@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 @Service
@@ -28,30 +31,44 @@ public class ReadFile {
         this.difficultyService = difficultyService;
         this.testService = testService;
         this.problemService = problemService;
-        readTestsFromFile("c://eminens/tests.txt");
     }
 
-    public static void main(String args[]) throws Exception {
-//        readFile.readTestsFromFile("c://eminens/tests.txt");
-      /*  Path test_data = Paths.get(ReadFile.class.getResource("tests.txt").toURI());
-        Stream<Path> list = Files.list(test_data);
-        System.out.println(Arrays.toString(list.toArray()));*/
-
+    public static void main(String[] args) throws Exception {
+//        applyToAllTestDataFiles(System.out::println);
     }
 
-    void readTestsFromFile(String fileName) {
-        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+    public void readTestData() {
+        applyToAllTestDataFiles(this::readTestsFromFile);
+    }
+    private void applyToAllTestDataFiles(Consumer<Path> consumer) {
+        Stream<Path> list = null;
+        try {URI resourceFolder = ReadFile.class.getResource("/test_data").toURI();
+            list = Files.list(Paths.get(resourceFolder));
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+            System.err.println("Error at parsing test data.");
+        }
+        if (list != null) {
+            list.peek(System.out::println).forEach(consumer);
+        }
+    }
+
+    void readTestsFromFile(Path path) {
+        try (Stream<String> stream = Files.lines(path)) {
 
             String[] content = stream.toArray(String[]::new);
             Test test = createNewTest(content[0]);
+            System.out.println("test = " + test);
 
             for (int i = 1; i < content.length; ++i) {
-                convertALineToProblem(content[i], test);
+                Problem problem = convertALineToProblem(content[i], test);
+                System.out.println("problem = " + problem);
             }
             System.out.println("A file kiolvasása sikeres volt.");
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("hiba az adatok beolvasasakor");
         }
     }
 
