@@ -14,6 +14,6 @@ public class LoginController {
     @PostMapping
     public AuthenticationMessage loginUser() {
         System.out.println("LoginController.loginUser");
-        return new AuthenticationMessage("You are authenticated.");
+        return new AuthenticationMessage("sikeresen bejelentkeztél.");
     }
 }
